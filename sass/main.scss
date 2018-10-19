@@ -1,0 +1,85 @@
+// .container {
+//     p {
+//         font-family: cursive;
+//         background-color: plum;
+//     }
+//     section {
+//         p {
+//             font-family: fantasy;
+//             font-weight: 700px;
+//             background-color: aqua;
+//         }
+//     }
+// }
+
+// variables
+// always declared at the very top of stylesheet
+// first declare variables in order to use them
+$basetextsize: 12px;
+$container-space: 10px;
+$red: #C0392B;
+
+p {
+    color: $red;
+    font-size: $basetextsize;
+}
+
+// mixins are variables
+// variables that contains a block of code
+@mixin all_btns {
+    // color: white;
+    padding: 10px 20px;
+    font-size: 10px;
+    margin: 10px;
+}
+
+button.redClass {
+    background-color: red;
+    @include all_btns
+}
+
+button.blueClass {
+    background-color: blue;
+    @include all_btns
+}
+
+$backgroundColor: purple;
+@mixin smallMargin {
+    margin: 10px 20px;
+}
+button {
+    background-color: $backgroundColor;
+    // psuedo class
+    &:hover {
+        background-color: red;
+    }
+}
+// nesting
+.container {
+    font-size: 14px;
+    background-color: $backgroundColor;
+    // the p tag is nested
+    // inside the container
+    p {
+        color: rgb(170, 170, 195);
+        @include smallMargin;
+    }
+}
+
+// functions
+// calculate width of nav function
+// calculation of colors
+.nav {
+
+    // nav variables
+    $nav_width: 900px;
+    $nav_link_count: 5;
+    $purple: purple;
+
+    margin: 5px;
+
+    li {
+        width: $nav_width/$nav_link_count -10px;
+        background-color: lighten($purple, 15%)
+    }
+}
